@@ -3,6 +3,7 @@ import algorithm.misc.Matrix;
 import algorithm.misc.StringProblems;
 import algorithm.misc.divideAndConquer;
 import algorithm.recursion.Maze;
+import algorithm.test.AlgTest;
 import datastructure.LinkedList;
 import datastructure.NodeX;
 import datastructure.StackProblems;
@@ -14,7 +15,7 @@ public class apptest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		TestTree.testHasPathSum();
+		AlgTest.testMaxProd();
 	}
 
 	public static void testStringProblem() {
