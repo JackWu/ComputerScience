@@ -87,4 +87,9 @@ public class TestTree {
 		
 		
 	}
+	public static void testMorrisTraversal(){
+		Node<Integer> node = TestTree.buildTestGraph();
+		
+		t.morrisTraversal(node);
+	}
 }
