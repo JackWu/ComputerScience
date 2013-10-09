@@ -1,23 +1,25 @@
+import java.util.Random;
 
+import algorithm.dynamicPrograming.DPQuestion;
 import algorithm.misc.Matrix;
 import algorithm.misc.StringProblems;
 import algorithm.misc.divideAndConquer;
 import algorithm.recursion.Maze;
-import algorithm.test.AlgTest;
+import algorithm.sorting.QuickSort;
 import datastructure.LinkedList;
 import datastructure.NodeX;
 import datastructure.StackProblems;
 import datastructure.TreeStructure;
-import datastructure.test.TestTree;
 
 public class apptest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		String s = "abcde";
 
-		StringProblems.printKLengthPerm("abcde", "", s.length(), 2);
+
+		
+			QuickSort.quickSortTest();
+		
 	}
 
 	public static void testStringProblem() {

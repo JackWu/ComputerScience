@@ -1,11 +1,11 @@
 package algorithm.test;
 
-import algorithm.dynamicPrograming.setone;
+import algorithm.dynamicPrograming.DPQuestion;
 
 public class AlgTest {
 	
 	public static void testMaxProd(){
-		setone s = new setone();
+		DPQuestion s = new DPQuestion();
 		System.out.println(s.maxProd(100));
 	}
 
