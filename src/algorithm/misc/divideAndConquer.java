@@ -69,4 +69,37 @@ public class divideAndConquer {
 		}
 		
 	}
+	
+	
+	public pair getMinMax(int arr[], int low, int high){
+		pair minmax = new pair();
+		pair mml = new pair();
+		pair mmr = new pair();
+		
+		
+		if(low == high){
+			minmax.max = arr[low];
+			minmax.min = arr[high];
+		}
+		
+		if(high == low + 1){
+			minmax.max = Math.max(arr[high], arr[low]);
+			minmax.min = Math.min(arr[high], arr[low]);
+			
+			return minmax;
+		}
+		
+		int mid = (low+high)/2;
+		mml = getMinMax(arr, low, mid);
+		mmr = getMinMax(arr, mid+1, high);
+		
+		minmax.min = Math.min(mml.min, mmr.min);
+		minmax.max = Math.max(mml.max, mmr.max);
+		
+		return minmax;
+	}
+	class pair{
+		int min;
+		int max;
+	}
 }

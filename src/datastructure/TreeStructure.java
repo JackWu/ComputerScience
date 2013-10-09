@@ -221,5 +221,129 @@ public class TreeStructure {
 		}
 		
 	}
+	
+	public int size(Node<Integer> node){
+		if(node == null){
+			return 0;
+		}else{
+			return(size(node.left)+1 + size(node.right));
+		}
+	}
+	
+	private void doubleTree(Node<Integer> node) { 
+		  Node oldLeft;
+
+		  if (node == null) return;
+
+		  // do the subtrees 
+		  doubleTree(node.left); 
+		  doubleTree(node.right);
+
+		  // duplicate this node to its left 
+		  oldLeft = node.left; 
+		  node.left = new Node<Integer>(node.data); 
+		  node.left.left = oldLeft; 
+		} 
+		 
+	
+	public void mirror(Node<Integer> node){
+		if(node==null){
+			return;
+		}else{
+			Node<Integer> temp;
+			
+			mirror(node.left);
+			mirror(node.right);
+			
+			temp = node.left;
+			node.left=node.right;
+			node.right=temp;
+		}
+	}
+	
+	
+	public int countTrees(int numKeys){
+		if(numKeys <= 1){
+			return 1;
+		}else{
+			int sum = 0;
+			int left, right, root;
+			
+			for(root = 1; root<=numKeys; root++){
+				left = countTrees(root-1);
+				right = countTrees(numKeys - root);
+				
+				sum+=left*right;
+			}
+		return sum;
+
+		}
+		
+	}
+	
+	private boolean isBST(Node<Integer> node) { 
+		  if (node==null) return(true);
+
+		  // do the subtrees contain values that do not 
+		  // agree with the node? 
+		  if (node.left!=null && maxValue(node.left) > node.data) return(false); 
+		  if (node.right!=null && minValue(node.right) <= node.data) return(false);
+
+		  // check that the subtrees themselves are ok 
+		  return( isBST(node.left) && isBST(node.right) ); 
+		} 
+	public int minValue(Node<Integer> node){
+		
+		Node<Integer> current = node;
+		
+		while(current.left != null){
+			current = current.left;
+		}
+		return current.data;
+	}
+	
+	public int maxValue(Node<Integer> node){
+		
+		Node<Integer> current = node;
+		
+		while(current.right != null){
+			current = current.right;
+		}
+		return current.data;
+	}
+	
+	/** 
+	 Tests if a tree meets the conditions to be a 
+	 binary search tree (BST). Uses the efficient 
+	 recursive helper. 
+	*/ 
+	public boolean isBST2(Node<Integer> root) { 
+	 return( isBST2(root, Integer.MIN_VALUE, Integer.MAX_VALUE) ); 
+	}
+	/** 
+	  Efficient BST helper -- Given a node, and min and max values, 
+	  recurs down the tree to verify that it is a BST, and that all 
+	  its nodes are within the min..max range. Works in O(n) time -- 
+	  visits each node only once. 
+	*/ 
+	private boolean isBST2(Node<Integer> node, int min, int max) { 
+	  if (node==null) { 
+	    return(true); 
+	  } 
+	  else { 
+	   // left should be in range  min...node.data 
+	    boolean leftOk = isBST2(node.left, min, node.data);
+
+	    // if the left is not ok, bail out 
+	    if (!leftOk) return(false);
+
+	    // right should be in range node.data+1..max 
+	    boolean rightOk = isBST2(node.right, node.data+1, max);
+
+	    return(rightOk); 
+	  } 
+	} 
+	  
+
 
 }
