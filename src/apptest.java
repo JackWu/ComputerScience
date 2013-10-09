@@ -14,8 +14,10 @@ public class apptest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		String s = "abcde";
 
-		TestTree.testMorrisTraversal();
+		StringProblems.printKLengthPerm("abcde", "", s.length(), 2);
 	}
 
 	public static void testStringProblem() {
