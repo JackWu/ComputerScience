@@ -3,6 +3,7 @@ import algorithm.misc.Matrix;
 import algorithm.misc.StringProblems;
 import algorithm.misc.divideAndConquer;
 import algorithm.recursion.Maze;
+import algorithm.recursion.TestBacktrack;
 import algorithm.test.AlgTest;
 import datastructure.LinkedList;
 import datastructure.NodeX;
@@ -15,7 +16,7 @@ public class apptest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		TestTree.testMorrisTraversal();
+		TestBacktrack.testSimple();
 	}
 
 	public static void testStringProblem() {
