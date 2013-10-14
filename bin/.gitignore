@@ -1,5 +1,6 @@
 /algorithm
 /datastructure
+<<<<<<< master
 /design
 /math
 /object
@@ -8,3 +9,6 @@
 /apptest.class
 /algorithm
 /datastructure
+=======
+>>>>>>> 217466e n
+/.gitignore
