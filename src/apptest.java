@@ -1,5 +1,7 @@
 
+import math.SimpleMath;
 import algorithm.misc.Matrix;
+import algorithm.misc.StringAlgo;
 import algorithm.misc.StringProblems;
 import algorithm.misc.divideAndConquer;
 import algorithm.recursion.Maze;
@@ -15,7 +17,11 @@ public class apptest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		TestTree.testMorrisTraversal();
+		SimpleMath s = new SimpleMath();
+		
+		
+		
+		s.add_no_arithm(1, 3);
 	}
 
 	public static void testStringProblem() {
