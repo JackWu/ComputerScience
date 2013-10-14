@@ -1,8 +1,10 @@
 
+import algorithm.dynamicPrograming.dynamicPSetsOne;
 import algorithm.misc.Matrix;
 import algorithm.misc.StringProblems;
 import algorithm.misc.divideAndConquer;
 import algorithm.recursion.Maze;
+import algorithm.searching.Search;
 import algorithm.test.AlgTest;
 import datastructure.LinkedList;
 import datastructure.NodeX;
@@ -15,7 +17,9 @@ public class apptest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		TestTree.testMorrisTraversal();
+
+		dynamicPSetsOne s = new dynamicPSetsOne();
+		s.testLongestCommonSubString();
 	}
 
 	public static void testStringProblem() {
