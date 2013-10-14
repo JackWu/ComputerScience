@@ -1,10 +1,15 @@
 
+<<<<<<< HEAD
 import math.SimpleMath;
+=======
+import algorithm.dynamicPrograming.dynamicPSetsOne;
+>>>>>>> refs/remotes/origin/master
 import algorithm.misc.Matrix;
 import algorithm.misc.StringAlgo;
 import algorithm.misc.StringProblems;
 import algorithm.misc.divideAndConquer;
 import algorithm.recursion.Maze;
+import algorithm.searching.Search;
 import algorithm.test.AlgTest;
 import datastructure.LinkedList;
 import datastructure.NodeX;
@@ -17,11 +22,17 @@ public class apptest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+<<<<<<< HEAD
 		SimpleMath s = new SimpleMath();
 		
 		
 		
 		s.add_no_arithm(1, 3);
+=======
+
+		dynamicPSetsOne s = new dynamicPSetsOne();
+		s.testLongestCommonSubString();
+>>>>>>> refs/remotes/origin/master
 	}
 
 	public static void testStringProblem() {
