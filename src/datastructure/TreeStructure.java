@@ -6,6 +6,7 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 public class TreeStructure {
+	
 
 	int maxDepth(Node<Integer> root) {
 		if (root == null) {
