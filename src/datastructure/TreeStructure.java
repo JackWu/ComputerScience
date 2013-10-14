@@ -343,6 +343,32 @@ public class TreeStructure {
 	    return(rightOk); 
 	  } 
 	} 
+	
+	public void printPaths(Node<Integer> node){
+		int[] paths = new int[1000];
+		printPathsRecur(node, paths, 0);
+	}
+	
+	public void printPathsRecur(Node<Integer> node, int[] path, int pathLen){
+		if(node == null)
+			return;
+		path[pathLen] = node.data;
+		pathLen++;
+		
+		if(node.left == null && node.right==null){
+			printArray(path, pathLen);
+		}else{
+			printPathsRecur(node.left, path, pathLen);
+			printPathsRecur(node.right, path, pathLen);
+		}
+	}
+	
+	public void printArray(int[] path, int pathLen){
+		for(int i = 0; i < pathLen; i++)
+			System.out.println(path[i] + " ");
+		
+		System.out.println();
+	}
 	  
 
 
