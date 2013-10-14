@@ -92,4 +92,10 @@ public class TestTree {
 		
 		t.morrisTraversal(node);
 	}
+	
+	public static void testPath(){
+		Node<Integer> node = TestTree.buildTestGraph();
+		
+		t.printPaths(node);
+	}
 }
