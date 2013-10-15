@@ -1,9 +1,14 @@
 package datastructure;
 
+
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.LinkedList;
+
+import datastructure.BTreePrinter;
+import datastructure.Node;
 
 public class TreeStructure {
 
@@ -343,6 +348,80 @@ public class TreeStructure {
 	    return(rightOk); 
 	  } 
 	} 
+	
+	public void printPaths(Node<Integer> node){
+		int[] paths = new int[1000];
+		printPathsRecur(node, paths, 0);
+	}
+	
+	public void printPathsRecur(Node<Integer> node, int[] path, int pathLen){
+		if(node == null)
+			return;
+		path[pathLen] = node.data;
+		pathLen++;
+		
+		if(node.left == null && node.right==null){
+			printArray(path, pathLen);
+		}else{
+			printPathsRecur(node.left, path, pathLen);
+			printPathsRecur(node.right, path, pathLen);
+		}
+	}
+	
+	public void printArray(int[] path, int pathLen){
+		for(int i = 0; i < pathLen; i++)
+			System.out.println(path[i] + " ");
+		
+		System.out.println();
+	}
+	
+    public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        
+        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+        
+        Queue<TreeNode> currentLevel = new LinkedList<TreeNode>();
+        
+        Queue<TreeNode> nextLevel = new LinkedList<TreeNode>();
+        
+
+    	ArrayList<Integer> temp = new ArrayList<Integer>();
+        
+    	currentLevel.offer(root);
+        
+        while(!currentLevel.isEmpty()){
+        	
+        	Iterator<TreeNode> itrCurr = currentLevel.iterator();
+        	while(itrCurr.hasNext()){
+        		
+        		TreeNode curnode = itrCurr.next();
+        		
+        		if(curnode.left!=null)
+        			nextLevel.offer(curnode.left);
+        		
+        		if(curnode.right!=null)
+        			nextLevel.offer(curnode.right);
+        		
+        		System.out.print( curnode.val + " ");
+        		temp.add(curnode.val);
+        		
+        		
+        	}
+        	
+        	System.out.println();
+        	
+        	currentLevel = nextLevel;
+        	nextLevel = new LinkedList<TreeNode>();
+
+        	result.add(temp);
+        	temp = new ArrayList<Integer>();
+        	
+        	
+        }
+        
+        return result;
+        
+    }
 	  
 
 

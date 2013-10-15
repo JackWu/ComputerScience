@@ -92,4 +92,27 @@ public class TestTree {
 		
 		t.morrisTraversal(node);
 	}
+	
+	public static void testPath(){
+		Node<Integer> node = TestTree.buildTestGraph();
+		
+		t.printPaths(node);
+	}
+	
+	public static void testLevelPrint(){
+//		Node<Integer> node = TestTree.buildTestGraph();
+//		
+//		ArrayList<ArrayList<Integer>> arr = t.levelOrder(node);
+//		
+//		System.out.println("Following is going to print level nodes from array list");
+//		
+//		for(int i = 0; i < arr.size(); i ++){
+//			for(int j = 0; j < arr.get(i).size(); j++){
+//				System.out.print(arr.get(i).get(j) + " ");
+//			}
+//			
+//			System.out.println();
+//		}
+//		
+	}
 }
