@@ -2,6 +2,7 @@ package datastructure;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -373,6 +374,54 @@ public class TreeStructure {
 		
 		System.out.println();
 	}
+	
+    public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        
+        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+        
+        Queue<TreeNode> currentLevel = new LinkedList<TreeNode>();
+        
+        Queue<TreeNode> nextLevel = new LinkedList<TreeNode>();
+        
+
+    	ArrayList<Integer> temp = new ArrayList<Integer>();
+        
+    	currentLevel.offer(root);
+        
+        while(!currentLevel.isEmpty()){
+        	
+        	Iterator<TreeNode> itrCurr = currentLevel.iterator();
+        	while(itrCurr.hasNext()){
+        		
+        		TreeNode curnode = itrCurr.next();
+        		
+        		if(curnode.left!=null)
+        			nextLevel.offer(curnode.left);
+        		
+        		if(curnode.right!=null)
+        			nextLevel.offer(curnode.right);
+        		
+        		System.out.print( curnode.val + " ");
+        		temp.add(curnode.val);
+        		
+        		
+        	}
+        	
+        	System.out.println();
+        	
+        	currentLevel = nextLevel;
+        	nextLevel = new LinkedList<TreeNode>();
+
+        	result.add(temp);
+        	temp = new ArrayList<Integer>();
+        	
+        	
+        }
+        
+        return result;
+        
+    }
 	  
 
 
