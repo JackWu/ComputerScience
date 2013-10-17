@@ -82,6 +82,20 @@ public class StringProblems {
 
 		
 	}
+	public static void printKLengthPerm(String str, String prefix, int n, int k){
+		
+		if(k==0){
+			System.out.println(prefix);
+			return;
+		}else{
+			
+			for(int i = 0; i < n; ++i){
+				String newStr = prefix + str.charAt(i);
+				
+				printKLengthPerm(str, newStr, n,k-1);
+			}
+		}
+	}
 	
 	public static void perm(String prefix,  String str){
 		
