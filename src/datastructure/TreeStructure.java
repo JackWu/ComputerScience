@@ -380,6 +380,9 @@ public class TreeStructure {
         
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         
+        if(root==null)
+        	return result;
+        
         Queue<TreeNode> currentLevel = new LinkedList<TreeNode>();
         
         Queue<TreeNode> nextLevel = new LinkedList<TreeNode>();
