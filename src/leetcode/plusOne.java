@@ -15,26 +15,26 @@ public class plusOne {
         for(int i = digits.length-1; i >= 0; i--){
         
         	
-        	if(i== digits.length-1){
-        		if(digits[i]+1 == 10){
-        			digits[i] = 0;
-        			hasCarry = true;
-        		}else{
-        			digits[i] = digits[i]+1;
-        			hasCarry = false;
-        		}
-        	}
-        	if(hasCarry){
-        		
-        	}
+    		if(checkHasCarry(digits[i])){
+    			digits[i] = 0;
+    			hasCarry = true;
+    		}else{
+    			digits[i] = digits[i]+1;
+    			hasCarry = false;
+    		}
         }
         
         return digits;
         
     }
     
-    public static int calculate(int x, boolean hasCarry, int[] digits, int index){
-    	return 0;
+    public static boolean checkHasCarry(int x){
+    	
+    	if(x+1 >=10){
+    		return true;
+    	}else{
+    		return false;
+    	}
     }
 
 }
