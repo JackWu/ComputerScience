@@ -5,111 +5,82 @@ import java.util.HashMap;
 public class LRUCache {
 	
 	private int capacity;
-	private int size;
-	private Node head;
-	private Node current = head;
 	
-	private HashMap<Integer, Node> cacheRoom;
+	HashMap<Integer, Node> map = new HashMap<Integer, Node>();
 	
-    public LRUCache(int capacity) {
-        this.capacity = capacity;
-        this.size = 0;
-        cacheRoom = new HashMap<Integer, Node>();
-    }
-    
-    public int get(int key) {
-    	
-    	if(cacheRoom.containsKey(key)){
-    		Node temp = cacheRoom.get(key);
-    		if(temp.next!=null&&temp.previous!=null){
-    			temp.previous.next = temp.next;
-    			temp.previous = null;
-    			temp.next = head;
-    			head = temp;
-    		}else if(temp.previous!=null && temp.next == null){
-    			
-    			temp.previous.next = null;
-    			temp.next = head;
-    			temp.previous = null;
-    			head = temp;
-    		}
-    		return cacheRoom.get(key).value;
-    	}else{
-    		return -1;
-    	}
-    	
-        
-    }
-    
-    public void set(int key, int value) {
-        if(size>=capacity){
-        	removeOldest();
-        	addElement(key, value);
-        	
-        }else{
-        	
-        	addElement(key,value);
-        	
-        }
-    }
-    
-    private void removeOldest(){
-    	
-    	int key = current.key;
-    	cacheRoom.remove(key);
-    	
-    	if(current.previous!=null&&current.next==null){
-    		current = current.previous;
-    		current.next = null;
-    	}else{
-    		current = null;
-    	}
-    	size--;
-    	
-    }
-    private void addElement(int key, int value){
-
-    	if(!cacheRoom.containsKey(key)){
-
-    		size++;
-    		Node temp = addToDoublyLinkedList(key, value);
-        	cacheRoom.put(key, temp);
-    	}else{
-    		
-
-        	cacheRoom.get(key).value= value;
-    		
-    	}
-    	
-    	
-    }
-    
-    private Node addToDoublyLinkedList(int key, int value){
-    	Node newNode = new Node(key, value);
-    	if(head==null){
-    		head = newNode;
-    		current = newNode;
-    	}else{
-    		newNode.next = null;
-    		newNode.previous = current;
-    		current.next = newNode;
-    		current = current.next;
-    		
-    	}
-    	
-    	return newNode;
-    }
-    
-    
-    class Node{
-    	int key;
-    	int value;
-    	Node previous;
-    	Node next;
-    	Node(int key, int value){
-    		this.key = key;
-    		this.value = value;
-    	}
-    }
+	private Node head = new Node(-1, -1);
+	private Node tail = new Node(-2, -2);
+	
+	public LRUCache(int capacity){
+		this.capacity = capacity;
+		head.next = tail;
+		tail.prev = head;
+	}
+	
+	public int get(int key){
+		if(!map.containsKey(key))
+			return -1;
+		
+		Node cur = map.get(key);
+		cur.prev.next = cur.next;
+		cur.next.prev = cur.prev;
+		attach(cur);
+		
+		return cur.value;
+		
+		
+	}
+	
+	public void set(int key, int value){
+		if(map.containsKey(key)){
+			Node cur = map.get(key);
+			cur.value = value;
+			cur.prev.next = cur.next;
+			cur.next.prev = cur.prev;
+			attach(cur);
+		}else{
+			if(map.size() == capacity)
+				dettach();
+			Node cur = new Node(key, value);
+			attach(cur);
+			map.put(key, cur);
+		}
+		
+	}
+	
+	
+	private void attach(Node cur){
+		cur.next = head.next;
+		cur.next.prev = cur;
+		cur.prev = head;
+		head.next = cur;
+	}
+	
+	private void dettach(){
+		Node last = tail.prev;
+		last.prev.next = last.next;
+		last.next.prev = last.prev;
+		
+		map.remove(last.key);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	private class Node{
+		int key;
+		int value;
+		Node next = null;
+		Node prev = null;
+		
+		Node(int key, int value){
+			this.key = key;
+			this.value = value;
+		}
+	}
 
 }
