@@ -99,6 +99,12 @@ public class TestTree {
 		t.printPaths(node);
 	}
 	
+	public static void testMaxPath(){
+		Node<Integer> node = TestTree.buildTestGraph();
+		
+		t.MaxPathSum(node);
+	}
+	
 	public static void testLevelPrint(){
 //		Node<Integer> node = TestTree.buildTestGraph();
 //		
