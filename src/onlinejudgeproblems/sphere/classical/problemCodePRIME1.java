@@ -1,5 +1,7 @@
 package onlinejudgeproblems.sphere.classical;
 
+import java.util.BitSet;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 class problemCodePRIME1 {
@@ -26,34 +28,30 @@ class problemCodePRIME1 {
 
 			int x = Integer.parseInt(next_items[0]);
 			int y = Integer.parseInt(next_items[1]);
-			sieveOfEratoshenes(x, y);
+			sieve(x, y);
+			
+			System.out.println();
 
 		}
 	}
 	
-	public static void sieveOfEratoshenes(int begin,int end){
-		
-		boolean[] booleanArray = new boolean[end+1];
-		
-		for(int i = 0; i<=end; i++){
-			booleanArray[i] = true;
-		}
-		
-		for(int i= 2; i*i <=end; i++){
-			if(booleanArray[i]){
-				for(int j = i; i*j<=end; j++)
-					booleanArray[i*j] = false;
-			}
-		}
-		for(int i = begin; i < booleanArray.length;i++){
-			if(booleanArray[i])
-				System.out.print(i + " ");
-			else
-				System.out.print("-1" + " ");
-		}
-		
-		System.out.println();
-		
-	}
+    public static void sieve(int low, int upper){
+        LinkedList<Integer> primes = new LinkedList<Integer>();
+        BitSet nonPrimes = new BitSet(upper+1);
+ 
+        for (int p = 2; p <= upper ; p = nonPrimes.nextClearBit(p+1)) {
+            for (int i = p * p; i <= upper; i += p)
+                nonPrimes.set(i);
+            if(p>=low)
+            	primes.add(p);
+        }
+        printPrime(primes);
+    }
+    
+    public static void printPrime(LinkedList<Integer> primes){
+    	for(int i = 0; i < primes.size(); i++){
+    		System.out.println(primes.get(i));
+    	}
+    }
 
 }

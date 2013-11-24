@@ -422,6 +422,26 @@ public class TreeStructure {
         return result;
         
     }
+    
+    public int MaxPathSum(Node<Integer> node){
+    	int leftSubtreeSum, rightSubtreeSum;
+    	
+    	if(node == null)return 0;
+    	
+    	if(node.left == null && node.right ==null){
+    		System.out.println();
+    		return node.data;
+    	}
+    	
+    	leftSubtreeSum = MaxPathSum(node.left);
+    	rightSubtreeSum = MaxPathSum(node.right);
+    	
+    	if(leftSubtreeSum > rightSubtreeSum)
+    		return leftSubtreeSum + node.data;
+    	
+    	else
+    		return rightSubtreeSum + node.data;
+    }
 	  
 
 
